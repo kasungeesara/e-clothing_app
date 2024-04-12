@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "574848754741",
+    "project_id": "clothing-app-bc7cd",
+    "storage_bucket": "clothing-app-bc7cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574848754741:android:f0a1a4d74649f864c2fd7c",
+        "android_client_info": {
+          "package_name": "com.example.clothing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsj9LMvppHCHJdgXJkVeHXdL1WCqtBGJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574848754741:android:4928d529fc1b71d2c2fd7c",
+        "android_client_info": {
+          "package_name": "com.example.e_clothing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsj9LMvppHCHJdgXJkVeHXdL1WCqtBGJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, camel_case_types
 
+import 'package:e_clothing/screens/auth.ui/checkout.dart';
 import 'package:e_clothing/utils/appconst.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -28,7 +29,6 @@ final List<ClothingItem> watch = [
   ClothingItem(name: "Watch 1", price: 3500.0, imageUrl: "assets/wt1.jpg"),
   ClothingItem(name: "Watch 2", price: 4000.0, imageUrl: "assets/wt3.jpg"),
   ClothingItem(name: "Watch 3", price: 4600.0, imageUrl: "assets/wt2.jpg"),
-
 ];
 
 final List<ClothingItem> earing = [
@@ -72,32 +72,30 @@ class accescreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppConstant.appmaincolor,
-        
-        title: Text('Accessories',
-        style: TextStyle(
-          color: AppConstant.apptextcolor,
-        ),
+        title: Text(
+          'Accessories',
+          style: TextStyle(
+            color: AppConstant.apptextcolor,
+          ),
         ),
       ),
-      
       backgroundColor: AppConstant.appsecondarycolor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-        'assets/acce.jpg',
-        width: double.infinity,
-        height: 200,
-        fit: BoxFit.cover,
-      ),
+              'assets/acce.jpg',
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
             buildCategoryCarousel('SUNGLASSES', sunglass),
             buildCategoryCarousel('WATCHES', watch),
             buildCategoryCarousel('EARINGS', earing),
             // buildCategoryCarousel('Skirts', Skirts),
             // buildCategoryCarousel('Caps', caps),
           ],
-          
         ),
       ),
     );
@@ -111,7 +109,10 @@ class accescreen extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             category,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: AppConstant.apptextcolor),
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: AppConstant.apptextcolor),
           ),
         ),
         CarouselSlider.builder(
@@ -131,56 +132,69 @@ class accescreen extends StatelessWidget {
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index, int realIndex) {
             final item = items[index];
-            return Container(
-              margin: EdgeInsets.symmetric(horizontal: 5.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      item.imageUrl,
-                      fit: BoxFit.cover,
-                      width: 400.0,
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => CheckoutPage(
+                      price: item.price,
+                      productName: item.name,
                     ),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Colors.black
+                  ),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        item.imageUrl,
+                        fit: BoxFit.cover,
+                        width: 400.0,
+                      ),
+                      Positioned(
+                        bottom: 0.0,
+                        left: 0.0,
+                        right: 0.0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color.fromARGB(200, 0, 0, 0),
+                                Colors.black
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                item.name,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                'Rs ${item.price.toStringAsFixed(2)}',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                ),
+                              ),
                             ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
                           ),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              item.name,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'Rs ${item.price.toStringAsFixed(2)}',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

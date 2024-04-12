@@ -1,4 +1,5 @@
 // ignore_for_file: file_names, unused_import
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/user_panel/allcategory.dart';
@@ -77,7 +78,7 @@ class _SidebarState extends State<Sidebar> {
             selected: _selectedIndex == 4,
             title: const Text('LOGOUT'),
             leading: const Icon(Icons.logout),
-            onTap: () => _onItemTapped(4),
+            onTap: () => FirebaseAuth.instance.signOut(),
           ),
         ],
       ),
